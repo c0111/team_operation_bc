@@ -7,8 +7,37 @@ public class Chain {
 
     public static void main(String[] args) {
 
-        Boolean isEnteringData = true;
+        int miningDifficulty = 5;
+
+        //Initial block
         chain.add(new Block("Test data block one.", "0"));
+
+        //Generate test blocks
+        for (int i = 0; i < 25; i++) {
+            chain.add(new Block("Data test block" + Integer.toString(i), chain.get(chain.size()-1).hash));
+        }
+
+        //Add patient data using command line.
+        userInput();
+
+
+        for (int i=0; i < chain.size(); i++){
+            System.out.println(chain.get(i).calculateHash());
+        }
+
+        //Mine blocks
+        for (int i = 0; i < chain.size(); i++) {
+            chain.get(i).mine(miningDifficulty);
+        }
+
+        //Blockchain
+        System.out.println(chain + "\n");
+    }
+
+    public static void userInput() {
+
+        Boolean isEnteringData = true;
+        //chain.add(new Block("Test data block one.", "0"));
 
         while(isEnteringData) {
 
@@ -27,19 +56,6 @@ public class Chain {
             else if (!isContinuing.equals("y"))
                 throw new IllegalArgumentException("Invalid Input. ");
         }
-
-        System.out.println(chain);
-
     }
 
 }
-
-
-//                    Block genesisBlock = new Block("Patient one test data", "0");
-//                    System.out.println("Hash for block 1 : " + genesisBlock.hash);
-//
-//                    Block secondBlock = new Block("Patient two test data", genesisBlock.hash);
-//                    System.out.println("Hash for block 2 : " + secondBlock.hash);
-//
-//                    Block thirdBlock = new Block("Patient three test data", secondBlock.hash);
-//                    System.out.println("Hash for block 3 : " + thirdBlock.hash);
