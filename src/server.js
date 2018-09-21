@@ -20,19 +20,17 @@ app.get('/Running', function(request, response){
 
         response.sendfile('running.html');
 
-        //var compileit = 'javac team_operation_bc';
-
-        //exec(compileit, function(error, stdout, stderr){
-
-        console.log('program ran');
-
-});
-
         var child = require('child_process').spawn(
 
-  'java', ['-jar', 'done.jar', 'gson-2.6.2.jar', 'argument to pass in']
+          'java', ['-jar', 'done.jar', 'argument to pass in']);
 
-);
+        var compileit = 'javac Chain.java';
+
+        exec(compileit, function(error, stdout, stderr){
+
+        console.log('program ran');
+        })
+        });
 
 
 const port = 8080

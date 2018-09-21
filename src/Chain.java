@@ -1,4 +1,4 @@
-import com.google.gson.GsonBuilder;
+//import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -30,8 +30,8 @@ public class Chain {
         }
 
         //Blockchain (Json)
-        String blockchainJson = new GsonBuilder().setPrettyPrinting().create().toJson(chain);
-        System.out.println(blockchainJson);
+        //String blockchainJson = new GsonBuilder().setPrettyPrinting().create().toJson(chain);
+        //System.out.println(blockchainJson);
 
 
         System.out.println("\n\n" + "Blockchain Data:" + "\n" + getChainData());
