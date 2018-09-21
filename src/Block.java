@@ -15,6 +15,10 @@ public class Block {
         this.hash = calculateHash();
     }
 
+    public String getData() {
+        return this.data;
+    }
+
     public String calculateHash() {
         return StringSHA.applySha256(
                 Integer.toString(key) +
