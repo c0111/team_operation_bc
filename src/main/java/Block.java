@@ -1,23 +1,37 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Block {
 
-    private String data;
+    ArrayList<String> data;
     public String hash;
     public String previousHash;
     private long timeStamp;
     private int key;
 
-    public Block(String data, String previousHash) {
-        this.data = data;
+
+    public Block(Patient patient, String previousHash) {
+        this.data = getPatientData(patient);
         this.previousHash = previousHash;
         this.timeStamp = new Date().getTime();
         this.hash = calculateHash();
     }
 
-    public String getData() {
-        return this.data;
+    public static ArrayList<String> getPatientData(Patient patient){
+        ArrayList<String> patientData = new ArrayList<>();
+        patientData.add(patient.ssn);
+        patientData.add(patient.firstName);
+        patientData.add(patient.lastName);
+        patientData.add(patient.birthDate);
+        patientData.add(patient.diagnosis);
+        patientData.add(patient.treatment);
+        return patientData;
     }
+
+//    public static int getRecordNumber(Patient patient) {
+//        return patient.recordNumber;
+//    }
+
 
     public String calculateHash() {
         return StringSHA.applySha256(
